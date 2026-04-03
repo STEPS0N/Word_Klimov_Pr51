@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Word_Klimov"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        FontFamily="Bahnschrift Light"
+        Title="MainWindow" Height="450" Width="800" MinHeight="450" MinWidth="800">
     <Grid>
-        
+        <Grid VerticalAlignment="Top" Height="50" Background="#FFF0F0F0">
+            <Image VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" Height="30"
+               Margin="10,10,0,0" Source="/Images/icon.png" Grid.RowSpan="2"/>
+            <Label Margin="45,0,114,0" VerticalContentAlignment="Center" FontSize="18"
+               Content="Жильцы дома" FontWeight="Bold" Grid.RowSpan="2"/>
+            <Button Click="Report" Width="100" Height="25" Content="Отчёт" Margin="0,10,10,0" Grid.RowSpan="2"
+                VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        </Grid>
+        <ScrollViewer Margin="0,50,0,0">
+            <StackPanel x:Name="Parent">
+
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>
