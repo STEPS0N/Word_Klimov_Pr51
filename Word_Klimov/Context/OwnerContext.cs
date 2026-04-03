@@ -170,7 +170,7 @@ namespace Word_Klimov.Context
             gfx.DrawRectangle(new XSolidBrush(XColors.LightGray), MarginLeft + (Width + 10) * 2, MarginTop + 100, Width, 20);
             gfx.DrawRectangle(new XSolidBrush(XColors.LightGray), MarginLeft + (Width + 10) * 3, MarginTop + 100, Width, 20);
 
-            gfx.DrawString("№" + AllOwners().Count, font, XBrushes.Black,
+            gfx.DrawString("№", font, XBrushes.Black,
                 new XRect(MarginLeft, MarginTop + 100, Width, 20),
                 XStringFormats.Center);
             gfx.DrawString("Фамилия", font, XBrushes.Black,
@@ -203,6 +203,27 @@ namespace Word_Klimov.Context
                     new XRect(MarginLeft + (Width + 10) * 3, MarginTop + 100 + 25 * (i + 1), Width, 20),
                     XStringFormats.Center);
             }
+
+            PdfPage page1 = document.AddPage();
+            XGraphics gfx1 = XGraphics.FromPdfPage(page1);
+            gfx1.DrawString("Список жильцов дома", fontHeader, XBrushes.Black,
+                new XRect(0, MarginTop, page1.Width, 15),
+                XStringFormats.Center);
+            gfx1.DrawString("по адресу: г. Пермь, ул. Луначарского, д. 24", font, XBrushes.Black,
+                new XRect(0, MarginTop + 30, page1.Width, 10),
+                XStringFormats.Center);
+            gfx1.DrawString("Всего жильцов: " + AllOwners().Count, font, XBrushes.Black,
+                new XRect(MarginLeft, MarginTop + 70, page1.Width, 10),
+                XStringFormats.CenterLeft);
+
+            for (int i = 0; i < AllOwners().Count; i++)
+            {
+                string ownerInfo = $"{i + 1}) {AllOwners()[i].LastName} {AllOwners()[i].FirstName} {AllOwners()[i].SurName} - кв. {AllOwners()[i].NumberRoom}";
+                gfx1.DrawString(ownerInfo, font, XBrushes.Black,
+                    new XRect(MarginLeft, MarginTop + 100 + 25 * (i + 1), page1.Width - 100, 15),
+                    XStringFormats.TopLeft);
+            }
+
             document.Save(fileName);
             Process.Start(fileName);
         }
