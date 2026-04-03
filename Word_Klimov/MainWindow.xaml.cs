@@ -44,5 +44,16 @@ namespace Word_Klimov
                 OwnerContext.Report(sfd.FileName);
             }
         }
+
+        private void ReportPDF(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "PDF (*.pdf)|*.pdf";
+            sfd.ShowDialog();
+            if (sfd.FileName != "")
+            {
+                OwnerContext.ReportPDF(sfd.FileName);
+            }
+        }
     }
 }

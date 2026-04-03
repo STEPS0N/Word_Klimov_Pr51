@@ -15,6 +15,8 @@
                Content="Жильцы дома" FontWeight="Bold" Grid.RowSpan="2"/>
             <Button Click="Report" Width="100" Height="25" Content="Отчёт" Margin="0,10,10,0" Grid.RowSpan="2"
                 VerticalAlignment="Top" HorizontalAlignment="Right"/>
+            <Button Click="ReportPDF" Width="45" Height="25" Content="PDF" Margin="0,10,114,0"
+                    VerticalAlignment="Top" HorizontalAlignment="Right"/>
         </Grid>
         <ScrollViewer Margin="0,50,0,0">
             <StackPanel x:Name="Parent">
